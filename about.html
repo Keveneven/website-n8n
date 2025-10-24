@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Thinkage.org</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>About Thinkage</h1>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>Thinkage.org is a space dedicated to exploring ideas, technology, and creativity. 
+    It’s a growing project — a place to document thoughts, share insights, and experiment with digital tools.</p>
+    <p>This site was built with Cloudflare Pages, GitHub, and curiosity ✨</p>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Thinkage.org</p>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
