@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Welcome to Thinkage</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thinkage.org</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Hello from Thinkage.org!</h1>
-  <p>Your site is live — powered by Cloudflare Pages.</p>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Welcome to Thinkage.org</h1>
+    <p>A digital space for ideas, experiments, and creativity — built with curiosity and simplicity in mind.</p>
+    <a href="about.html" class="button">Learn More</a>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Thinkage.org
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
