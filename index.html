@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Welcome to Thinkage</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thinkage.org</title>
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --text: #111827;
+      --accent: #2563eb;
+      --radius: 12px;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      line-height: 1.6;
+      margin: 0 auto 1.5rem;
+    }
+
+    a.button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    a.button:hover {
+      background-color: #1e40af;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello from Thinkage.org!</h1>
-  <p>Your site is live — powered by Cloudflare Pages.</p>
+  <header>
+    <h1>Welcome to <span style="color: var(--accent)">Thinkage.org</span></h1>
+    <p>Your digital space for ideas, experiments, and innovation — proudly powered by Cloudflare Pages.</p>
+    <a class="button" href="#learn-more">Learn More</a>
+  </header>
+
+  <footer>
+    © <span id="year"></span> Thinkage.org. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
