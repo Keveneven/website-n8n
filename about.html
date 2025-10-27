@@ -1,30 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Thinkage.org</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Thinkage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #6A0DAD;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .brain-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #6A0DAD 0%, #8B2DAD 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .about-content {
+            padding: 5rem 2rem;
+            background: #F5F5F5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .content-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #6A0DAD;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: #F5F5F5;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #6A0DAD 0%, #8B2DAD 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .team-member h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #6A0DAD;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member .role {
+            color: #00A8E8;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: #F5F5F5;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #6A0DAD;
+        }
+
+        .value-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #6A0DAD;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #6A0DAD;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>About Thinkage</h1>
+    <!-- Navigation -->
     <nav>
-      <a href="index.html">Home</a> |
-      <a href="contact.html">Contact</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="brain-icon">🧠</div>
+                <span>Thinkage</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <p>Thinkage.org is a space dedicated to exploring ideas, technology, and creativity. 
-    It’s a growing project — a place to document thoughts, share insights, and experiment with digital tools.</p>
-    <p>This site was built with Cloudflare Pages, GitHub, and curiosity ✨</p>
-  </main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>About Thinkage</h1>
+        <p>Pioneering the future of intelligent business solutions</p>
+    </section>
 
-  <footer>
-    <p>© <span id="year"></span> Thinkage.org</p>
-  </footer>
+    <!-- Main Content -->
+    <section class="about-content">
+        <div class="container">
+            <!-- Our Story -->
+            <div class="content-section">
+                <h2>Our Story</h2>
+                <p>Founded with a vision to democratize artificial intelligence, Thinkage bridges the gap between cutting-edge technology and practical business applications. We believe that every organization, regardless of size, should have access to intelligent solutions that drive growth and efficiency.</p>
+                <p>What started as a passion project has evolved into a full-service AI consultancy, helping businesses across industries harness the power of machine learning, automation, and data-driven insights. Our journey is defined by our commitment to innovation, excellence, and the success of our clients.</p>
+            </div>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+            <!-- Mission & Vision -->
+            <div class="content-section">
+                <h2>Our Mission</h2>
+                <p>To empower businesses with accessible, innovative AI solutions that solve real-world problems. We're committed to making advanced technology work for you, not the other way around. Our mission is to transform complexity into clarity, challenges into opportunities, and data into decisions.</p>
+                
+                <h2 style="margin-top: 2rem;">Our Vision</h2>
+                <p>We envision a future where every business, from startups to enterprises, leverages AI to unlock their full potential. By 2026, we aim to help 1,000+ organizations transform their operations through intelligent automation and strategic AI integration, creating a ripple effect of innovation across industries.</p>
+            </div>
+
+            <!-- Our Values -->
+            <div class="content-section">
+                <h2>Our Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Innovation First</h3>
+                        <p>We stay at the cutting edge of AI technology, continuously exploring new possibilities and pushing boundaries.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Client Success</h3>
+                        <p>Your success is our success. We measure our achievements by the impact we create for your business.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Integrity & Trust</h3>
+                        <p>We build lasting partnerships through transparency, honesty, and delivering on our promises.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Excellence</h3>
+                        <p>We hold ourselves to the highest standards in everything we do, from strategy to implementation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="content-section">
+                <h2>Meet Our Team</h2>
+                <p>Our diverse team of AI specialists, data scientists, and business strategists brings together decades of combined experience in artificial intelligence and enterprise solutions.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-avatar">👤</div>
+                        <h3>Alex Chen</h3>
+                        <div class="role">Founder & CEO</div>
+                        <p>AI strategist with 10+ years in machine learning and business transformation.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">👤</div>
+                        <h3>Sarah Martinez</h3>
+                        <div class="role">Head of ML Engineering</div>
+                        <p>Expert in deploying production-scale AI systems and neural networks.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-avatar">👤</div>
+                        <h3>David Kumar</h3>
+                        <div class="role">Lead Data Scientist</div>
+                        <p>Specialist in predictive analytics and custom algorithm development.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="content-section">
+                <h2>Why Choose Thinkage</h2>
+                <p>With deep expertise in machine learning, natural language processing, and automation, we bring both technical excellence and business acumen to every project. We don't just build solutions—we build partnerships that drive long-term success.</p>
+                <p>Our approach combines cutting-edge AI technology with practical business strategy, ensuring that every solution we create delivers measurable results. From initial consultation to deployment and beyond, we're with you every step of the way.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Thinkage. All rights reserved. | Intelligent Solutions for Modern Business</p>
+    </footer>
 </body>
 </html>
