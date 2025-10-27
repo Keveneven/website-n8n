@@ -1,32 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thinkage.org</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thinkage - Intelligent Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #6A0DAD;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .brain-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #6A0DAD 0%, #8B2DAD 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: #00A8E8;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #0088b8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,168,232,0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: #F5F5F5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #6A0DAD;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #6A0DAD;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: #F5F5F5;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #6A0DAD;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial .author {
+            font-weight: 500;
+            color: #6A0DAD;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: #F5F5F5;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .about-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #6A0DAD;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #6A0DAD;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6A0DAD;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            background: #6A0DAD;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: #5a0d8d;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #6A0DAD;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
+    <!-- Navigation -->
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="brain-icon">🧠</div>
+                <span>Thinkage</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <h1>Welcome to Thinkage.org</h1>
-    <p>A digital space for ideas, experiments, and creativity — built with curiosity and simplicity in mind.</p>
-    <a href="about.html" class="button">Learn More</a>
-  </main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Welcome to Thinkage</h1>
+        <p>Empowering businesses with intelligent AI solutions that drive innovation and growth. We transform complex challenges into elegant, automated solutions.</p>
+        <a href="#contact" class="cta-button">Get Started</a>
+    </section>
 
-  <footer>
-    © <span id="year"></span> Thinkage.org
-  </footer>
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>AI Strategy</h3>
+                    <p>Develop comprehensive AI strategies tailored to your business goals and industry challenges.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Machine Learning</h3>
+                    <p>Build and deploy custom machine learning models that learn from your data and improve over time.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Automation</h3>
+                    <p>Streamline operations with intelligent automation solutions that save time and reduce costs.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Consulting</h3>
+                    <p>Expert guidance on implementing AI technologies and transforming your business processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"Thinkage transformed our operations with their innovative AI solutions. The results exceeded our expectations."</p>
+                    <div class="author">— Sarah Johnson, Tech Innovators Inc.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Professional, knowledgeable, and always delivers on time. They truly understand the power of AI."</p>
+                    <div class="author">— Michael Chen, DataFlow Solutions</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Working with Thinkage was a game-changer for our business. Highly recommend their services!"</p>
+                    <div class="author">— Emma Rodriguez, Future Systems</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Thinkage</h2>
+            <div class="about-content">
+                <p>Founded with a vision to democratize artificial intelligence, Thinkage bridges the gap between cutting-edge technology and practical business applications. We believe that every organization, regardless of size, should have access to intelligent solutions that drive growth and efficiency.</p>
+                
+                <h3>Our Mission</h3>
+                <p>To empower businesses with accessible, innovative AI solutions that solve real-world problems. We're committed to making advanced technology work for you, not the other way around.</p>
+                
+                <h3>Our Goals</h3>
+                <p>We strive to be at the forefront of AI innovation while maintaining a focus on practical implementation. Our goal is to help 1,000+ businesses transform their operations through intelligent automation and strategic AI integration by 2026.</p>
+                
+                <h3>Why Choose Us</h3>
+                <p>With deep expertise in machine learning, natural language processing, and automation, we bring both technical excellence and business acumen to every project. We don't just build solutions—we build partnerships.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Thinkage. All rights reserved. | Intelligent Solutions for Modern Business</p>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            e.target.reset();
+        }
+    </script>
 </body>
 </html>
