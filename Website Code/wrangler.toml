@@ -1,0 +1,5 @@
+name = "thinkage-pages"
+
+[[send_email]]
+name = "CONTACT_SEND"
+destination_address = "secret.talky.talky.a.i.chat@gmail.com"
