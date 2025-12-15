@@ -1,0 +1,7 @@
+{
+  "name": "thinkage-pages",
+  "private": true,
+  "dependencies": {
+    "mimetext": "^3.0.25"
+  }
+}
