@@ -1,3 +1,5 @@
+pages_build_output_dir = "."
+
 name = "website-n8n"
 compatibility_date = "2025-10-24"
 
