@@ -1,14 +1,17 @@
-export async function onRequestPost({ request }) {
-  const formData = await request.formData();
+import { EmailMessage } from "cloudflare:email";
+import { createMimeMessage } from "mimetext";
 
-  const name = formData.get("name");
-  const email = formData.get("email");
-  const company = formData.get("company");
-  const service = formData.get("service");
-  const message = formData.get("message");
+export async function onRequestPost({ request, env }) {
+  const form = await request.formData();
 
-  const body = `
-New Thinkage Contact Form Submission
+  const name = form.get("name") || "";
+  const email = form.get("email") || "";
+  const company = form.get("company") || "";
+  const service = form.get("service") || "";
+  const message = form.get("message") || "";
+
+  const text =
+`New Thinkage Contact Form Submission
 
 Name: ${name}
 Email: ${email}
@@ -19,21 +22,24 @@ Message:
 ${message}
 `;
 
-  await fetch("https://api.mailchannels.net/tx/v1/send", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      personalizations: [
-        { to: [{ email: "hello@thinkage.org" }] }
-      ],
-      from: {
-        email: "hello@thinkage.org",
-        name: "Thinkage Website"
-      },
-      subject: "New Contact Form Submission",
-      content: [{ type: "text/plain", value: body }]
-    })
-  });
+  const msg = createMimeMessage();
+  // "From" can be anything on your domain; it doesn't need to be a real inbox.
+  msg.setSender({ name: "Thinkage Website", addr: "no-reply@thinkage.org" });
+  msg.setRecipient(env.CONTACT_SEND.destinationAddress || "secret.talky.talky.a.i.chat@gmail.com");
+  msg.setSubject("New Contact Form Submission");
+  msg.addMessage({ contentType: "text/plain", data: text });
 
-  return new Response("OK", { status: 200 });
+  const raw = msg.asRaw();
+
+  const emailMessage = new EmailMessage(
+    "no-reply@thinkage.org",
+    env.CONTACT_SEND.destinationAddress || "secret.talky.talky.a.i.chat@gmail.com",
+    raw
+  );
+
+  await env.CONTACT_SEND.send(emailMessage);
+
+  // Send them back to the contact page instead of leaving them on /api/contact
+  return Response.redirect("/contact.html?sent=1", 303);
 }
+
