@@ -1,4 +1,5 @@
-name = "thinkage-pages"
+name = "website-n8n"
+compatibility_date = "2025-10-24"
 
 [[send_email]]
 name = "CONTACT_SEND"
