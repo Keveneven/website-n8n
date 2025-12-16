@@ -1,8 +1,0 @@
-pages_build_output_dir = "."
-
-name = "website-n8n"
-compatibility_date = "2025-10-24"
-
-[[send_email]]
-name = "CONTACT_SEND"
-destination_address = "secret.talky.talky.a.i.chat@gmail.com"
